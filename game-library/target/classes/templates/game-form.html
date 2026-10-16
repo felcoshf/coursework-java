@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление игры</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Добавить игру</h1>
+
+<form method="post" action="/games/add">
+    <p>
+        <label>Название:
+            <input type="text" name="title" required>
+        </label>
+    </p>
+    <p>
+        <label>Платформа:
+            <select name="platform">
+                <option th:each="p : ${platforms}" th:value="${p}" th:text="${p}"></option>
+            </select>
+        </label>
+    </p>
+    <p>
+        <label>Статус:
+            <select name="status">
+                <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+            </select>
+        </label>
+    </p>
+    <button type="submit">Сохранить</button>
+    <a th:href="@{/games}">Отмена</a>
+</form>
+</body>
+</html>
